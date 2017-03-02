@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "files": [
-      "generators"
+    "generators"
   ],
   "keywords": [
     "yeoman-generator",
@@ -16,6 +16,8 @@
     "nodejs"
   ],
   "dependencies": {
-    "yeoman-generator": "^1.1.0"
+    "chalk": "^1.1.3",
+    "yeoman-generator": "^1.1.0",
+    "yosay": "^2.0.0"
   }
 }
