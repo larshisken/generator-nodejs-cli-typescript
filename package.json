@@ -6,6 +6,7 @@
     "name": "Lars Hisken",
     "email": "larshisken@protonmail.com"
   },
+  "repository": "gitlab:larshisken/generator-nodejs-cli-typescript",
   "license": "MIT",
   "files": [
     "generators"
