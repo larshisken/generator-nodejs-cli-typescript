@@ -17,46 +17,76 @@ module.exports = class extends Generator {
     prompting() {
         return this.prompt([{
             type: 'input',
-            name: 'projectName',
-            message: 'What is your project name?',
+            name: 'appname',
+            message: 'Provide a name for your project',
             default: this.appname // Default to current folder name
         }, {
             type: 'input',
-            name: 'authorName',
+            name: 'execname',
+            message: 'Provide a name for your executable',
+            default: this.appname.replace(' ', '-').toLowerCase()
+        }, {
+            type: 'input',
+            name: 'authorname',
             message: 'What is your name?',
             default: this.user.git.name()
         }, {
             type: 'input',
-            name: 'authorEmail',
+            name: 'authoremail',
             message: 'What is your email address?',
             default: this.user.git.email()
         }]).then((answers) => {
-            this.projectName = answers.projectName;
-            this.authorName = answers.authorName;
-            this.authorEmail = answers.authorEmail;
+            this.appname = answers.appname;
+            this.execname = answers.execname;
+            this.authorname = answers.authorname;
+            this.authoremail = answers.authoremail;
         });
     }
 
     writing() {
+        this.fs.copy(
+            this.templatePath('src'),
+            this.destinationPath('src')
+        )
+        this.fs.copy(
+            this.templatePath('bin/app'),
+            this.destinationPath('bin/' + this.execname)
+        )
+        this.fs.copy(
+            this.templatePath('bin/app-write'),
+            this.destinationPath('bin/' + this.execname + '-write')
+        )
         this.fs.copyTpl(
             this.templatePath('_package.json'),
             this.destinationPath('package.json'), {
-                projectName: this.projectName,
-                authorName: this.authorName,
-                authorEmail: this.authorEmail
+                appname: this.appname,
+                execname: this.execname,
+                authorname: this.authorname,
+                authoremail: this.authoremail
             }
         )
         this.fs.copyTpl(
-            this.templatePath('_LICENSE'),
+            this.templatePath('LICENSE'),
             this.destinationPath('LICENSE'), {
                 authorName: this.authorName,
                 year: new Date().getFullYear().toPrecision(4)
             }
         )
+        this.fs.copy(
+            this.templatePath('_tsconfig.json'),
+            this.destinationPath('tsconfig.json')
+        )
+        this.fs.copy(
+            this.templatePath('gitignore'),
+            this.destinationPath('.gitignore')
+        )
     }
 
     install() {
-        this.npmInstall();
+        var generator = this;
+        this.npmInstall(null, null, function() {
+            generator.spawnCommandSync('npm', ['run', 'build']);
+        });
     }
 
     end() {}

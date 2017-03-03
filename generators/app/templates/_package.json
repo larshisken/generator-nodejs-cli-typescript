@@ -1,14 +1,33 @@
 {
-  "name": "<%= projectName %>",
+  "name": "<%= appname %>",
   "version": "0.1.0",
   "description": "",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc --pretty",
+    "watch": "npm run build -- --watch"
   },
   "author": {
-    "name": "<%= authorName %>",
-    "email": "<%= authorEmail %>"
+    "name": "<%= authorname %>",
+    "email": "<%= authoremail %>"
   },
-  "license": "ISC"
+  "main": "dist/bin/app.js",
+  "typings": "dist/bin/app.d.ts",
+  "bin": {
+    "<%= execname %>": "bin/<%= execname %>"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/commander": "^2.3.31",
+    "@types/node": "^7.0.5",
+    "rimraf": "^2.6.1",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "commander": "^2.9.0"
+  }
 }
