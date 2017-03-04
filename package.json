@@ -1,6 +1,6 @@
 {
   "name": "generator-nodejs-cli-typescript",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Yeoman generator to setup a Node.js command-line interface app in Typescript",
   "author": {
     "name": "Lars Hisken",
