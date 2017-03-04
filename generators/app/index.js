@@ -37,7 +37,7 @@ module.exports = class extends Generator {
             default: this.user.git.email()
         }]).then((answers) => {
             this.appname = answers.appname;
-            this.execname = answers.execname;
+            this.execname = answers.execname.replace(' ', '-').toLowerCase();
             this.authorname = answers.authorname;
             this.authoremail = answers.authoremail;
         });
@@ -55,6 +55,10 @@ module.exports = class extends Generator {
         this.fs.copy(
             this.templatePath('bin/app-write'),
             this.destinationPath('bin/' + this.execname + '-write')
+        )
+        this.fs.copy(
+            this.templatePath('test'),
+            this.destinationPath('test')
         )
         this.fs.copyTpl(
             this.templatePath('_package.json'),

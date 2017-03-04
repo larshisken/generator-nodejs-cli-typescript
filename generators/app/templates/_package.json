@@ -2,11 +2,14 @@
   "name": "<%= appname %>",
   "version": "0.1.0",
   "description": "",
+  "repository": "",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc --pretty",
-    "watch": "npm run build -- --watch"
+    "test": "npm run build && mocha --compilers ts:ts-node/register --recursive test/**/*-spec.ts",
+    "watch": "npm run build -- --watch",
+    "watch:test": "npm run test -- --watch"
   },
   "author": {
     "name": "<%= authorname %>",
@@ -22,9 +25,16 @@
     "dist"
   ],
   "devDependencies": {
+    "@types/chai": "^3.4.35",
     "@types/commander": "^2.3.31",
+    "@types/mocha": "^2.2.39",
     "@types/node": "^7.0.5",
+    "@types/sinon": "^1.16.35",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
     "rimraf": "^2.6.1",
+    "sinon": "^1.17.7",
+    "ts-node": "^2.1.0",
     "typescript": "^2.2.1"
   },
   "dependencies": {
