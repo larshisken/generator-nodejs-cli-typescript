@@ -12,7 +12,7 @@ Install `generator-nodejs-cli-typescript` globally
 npm i -g generator-nodejs-cli-typescript
 ```
 
-Create a new project directory and and run `yo`
+Create a new project directory and run `yo`
 
 ```bash
 mkdir your-project && cd &_
