@@ -37,6 +37,9 @@ available via `npm run-script`:
     npm run test -- --watch
 ```
 
+## Authors
+
+- Lars Hisken (<larshisken@protonmail.com>)
 
 ## License
 
