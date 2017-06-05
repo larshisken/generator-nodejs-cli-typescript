@@ -3,7 +3,7 @@ import { Writer } from '../writer';
 
 export class Write {
 
-    private program: commander.IExportedCommand;
+    private program: commander.CommanderStatic;
     private package: any;
     private writer: Writer;
 

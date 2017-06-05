@@ -2,7 +2,7 @@ import * as commander from 'commander';
 
 export class App {
 
-    private program: commander.IExportedCommand;
+    private program: commander.CommanderStatic;
     private package: any;
 
     constructor() {
