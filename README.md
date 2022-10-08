@@ -15,7 +15,7 @@ npm i -g generator-nodejs-cli-typescript
 Create a new project directory and run `yo`
 
 ```bash
-mkdir your-project && cd &_
+mkdir your-project && cd $_
 yo nodejs-cli-typescript
 ```
 
